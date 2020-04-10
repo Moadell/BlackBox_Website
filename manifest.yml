@@ -1,0 +1,7 @@
+applications:
+  - name: add-deduct-app
+    command: yarn start:server
+    env:
+      NODE_ENV: production
+    services:
+      - add-deduct-db
