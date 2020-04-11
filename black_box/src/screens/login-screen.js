@@ -23,8 +23,20 @@ export class LoginScreen extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <>
+      <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+      <div class="split left">
+        <div class="centered img">
+        <img src="/LOGO 11.png" alt="BlackBox Logo"></img>
+        </div>
+        </div>
+
+        <div class="split right">
+        <div class="centered">
+        <div className="App">
         <br />
+        <h1>#Discovering_Technology</h1>
+        <br></br>
         <h1>Welcome </h1>
         <br />
         <form method="post" onSubmit={this.login.bind(this)}>
@@ -53,6 +65,9 @@ export class LoginScreen extends React.Component {
           <input type="submit" value="Login" className="submit_btn" />
         </form>
       </div>
+      </div>
+    </div>
+    </> 
     );
   }
   handleChange = event => {

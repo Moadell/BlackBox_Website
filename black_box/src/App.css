@@ -40,6 +40,28 @@ font-family: cursive;
 .App-link {
   color: #61dafb;
 }
+.submit_btn {
+  width: 50%;
+  height: 50px;
+  margin-left: 35%;
+  padding: 10px 15px;
+  background-color: whitesmoke;
+  background-color: 250ms;
+  color: black;
+  font-weight: bold;
+  border: 1px solid whitesmoke;
+}
+
+.submit_btn:hover {
+  cursor: pointer;
+  background-color: black;
+  color: whitesmoke;
+}
+
+.submit_btn.logout {
+  width: 10%;
+  margin-left: 45%;
+}
 
 @keyframes App-logo-spin {
   from {

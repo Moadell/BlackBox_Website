@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Progress } from "reactstrap";
 import { ToastContainer, toast } from "react-toastify";
-//import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.css";
+import '../App.css';
 
 export class UploadExcelScreen extends Component {
   constructor(props) {
@@ -133,7 +134,7 @@ export class UploadExcelScreen extends Component {
 
             <button
               type="button"
-              className="btn btn-success btn-block"
+              className="submit_btn"
               onClick={this.onClickHandler}
             >
               Upload
