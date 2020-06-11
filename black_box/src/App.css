@@ -25,6 +25,8 @@ body {
 font-style: italic;
 font-size: 50;
 font-family: cursive;
+margin-top: -50px;
+margin-bottom: -50px;
 }
 .App-header {
   background-color: #282c34;
