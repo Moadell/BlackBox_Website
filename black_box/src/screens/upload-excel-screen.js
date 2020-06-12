@@ -32,7 +32,7 @@ render() {
         </thead>
         <tbody>
             <tr onClick={() => {
-                                this.props.history.push(`https://wuzzuf.net/jobs/p/f0c46fe7-33d8-40ff-a337-d3645e226f0c-Software-Quality-Engineer-Kick-Start-Interactive-Giza-Egypt?l=sp&t=sj&a=software+engineer%7Csearch-v3%7Chpb&o=4`)
+                                window.open(`https://wuzzuf.net/jobs/p/f0c46fe7-33d8-40ff-a337-d3645e226f0c-Software-Quality-Engineer-Kick-Start-Interactive-Giza-Egypt?l=sp&t=sj&a=software+engineer%7Csearch-v3%7Chpb&o=4`)
                             }}>
                 <th>Software Quality Engineer</th>
                 <th>Kick Start Interactive Egypt </th>
@@ -41,17 +41,12 @@ render() {
             {
                 this.state.data.map((value, index) => {
                     return (
-                        <tr key={index}>
-                           <td>{value.staffId} </td>
-                            <a href="/resignations-internal"> <td>{value.managerName}</td> </a>
-                            <td>{value.data.phase1.status}</td>
-                            <td>{value.data.phase2.status}</td>
-                            <td>{value.data.phase3.status}</td>
-                            <td>{value.data.phase4.status}</td>
-                            <td>{value.data.phase5.status}</td>
-                            <td>{value.data.phase6.status}</td>
-                            <td>{value.data.phase7.status}</td>
-
+                        <tr key={index} onClick={() => {
+                            window.open(value.data.jobUrl.status)
+                        }}>
+                            <td>{value.jobTitle.status}</td>
+                            <td>{value.jobProvider.status}</td>
+                            <td>{value.jobSkills.status}</td>
                         </tr>
                     )
                 })

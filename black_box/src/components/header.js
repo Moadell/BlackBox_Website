@@ -17,7 +17,7 @@ export class Header extends React.Component {
       <Navbar style={{ backgroundColor: "black",
                       height : "80"
       }} variant="dark"  >
-        <Navbar.Brand href="/login"> <img
+        <Navbar.Brand href="/resign"> <img
         alt=""
         src="1.png"
         width="30"
@@ -28,7 +28,7 @@ export class Header extends React.Component {
     </Navbar.Brand>
         <Nav className="mr-auto" >
           <Nav.Link href="/upload" >Jobs</Nav.Link>
-          <Nav.Link href="/resign"> Profile</Nav.Link>
+          <Nav.Link href="/login">Login</Nav.Link>
           <Nav.Link href="/hr-view">Courses</Nav.Link>
         </Nav>
       </Navbar>
