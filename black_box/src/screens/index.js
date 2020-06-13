@@ -1,4 +1,5 @@
 export * from './login-screen';
-export * from './upload-excel-screen';
-export * from './resign-req-screen';
+export * from './jobs';
+export * from './dashbord';
 export * from './courses';
+export * from './profile';

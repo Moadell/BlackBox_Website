@@ -14,7 +14,7 @@ import {
 //const API = 'http://localhost:8080/api/';
 //const SEARCH = 'users/search'
 
-export class ResignReqScreen extends Component {
+export class dashbord extends Component {
 
   constructor(props) {
     super(props);

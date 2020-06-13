@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Table } from 'reactstrap';
 
 
-export class HrViewScreen extends Component {
+export class profile extends Component {
     constructor() {
         super();
         this.state = {

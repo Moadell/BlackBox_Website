@@ -27,7 +27,7 @@ export class Header extends React.Component {
       Home
     </Navbar.Brand>
         <Nav className="mr-auto" >
-          <Nav.Link href="/upload" >Jobs</Nav.Link>
+          <Nav.Link href="/jobs" >Jobs</Nav.Link>
           <Nav.Link href="/login">Login</Nav.Link>
           <Nav.Link href="/courses">Courses</Nav.Link>
         </Nav>
