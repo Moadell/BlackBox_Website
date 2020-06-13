@@ -11,8 +11,7 @@ import {
   LoginScreen,
   UploadExcelScreen,
   ResignReqScreen,
-  HrViewScreen,
-  ResignationsScreen
+  coursesView
 } from './screens';
 import './App.css';
 class App extends Component {
@@ -24,9 +23,8 @@ class App extends Component {
           <Switch>
             <Route path="/login" exact component={LoginScreen} />
             <Route path="/upload" component={UploadExcelScreen} />
+            <Route path="/courses" component={coursesView} />
             <Route path="/" component={ResignReqScreen} />
-            <Route path="/hr-view" component={HrViewScreen} />
-            <Route path="/resignations-details" component={ResignationsScreen} />
           </Switch>
           <h1> #Discovring_Technology</h1>
         </Router>

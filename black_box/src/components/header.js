@@ -29,7 +29,7 @@ export class Header extends React.Component {
         <Nav className="mr-auto" >
           <Nav.Link href="/upload" >Jobs</Nav.Link>
           <Nav.Link href="/login">Login</Nav.Link>
-          <Nav.Link href="/hr-view">Courses</Nav.Link>
+          <Nav.Link href="/courses">Courses</Nav.Link>
         </Nav>
       </Navbar>
     );
