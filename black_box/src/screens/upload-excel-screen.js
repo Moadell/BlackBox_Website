@@ -11,7 +11,7 @@ export class UploadExcelScreen extends Component {
 }
 
 componentWillMount() {
-    fetch('http://localhost:8080/api/resignations').then((res) => {
+    fetch('http://localhost:8080/jobs').then((res) => {
         res.json().then((data) => {
             this.setState({ data: data });
         })
@@ -42,11 +42,11 @@ render() {
                 this.state.data.map((value, index) => {
                     return (
                         <tr key={index} onClick={() => {
-                            window.open(value.data.jobUrl.status)
+                            window.open(value.data.jobUrl)
                         }}>
-                            <td>{value.jobTitle.status}</td>
-                            <td>{value.jobProvider.status}</td>
-                            <td>{value.jobSkills.status}</td>
+                            <td>{value.jobTitle}</td>
+                            <td>{value.jobProvider}</td>
+                            <td>{value.jobSkills}</td>
                         </tr>
                     )
                 })

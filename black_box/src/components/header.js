@@ -17,7 +17,7 @@ export class Header extends React.Component {
       <Navbar style={{ backgroundColor: "black",
                       height : "80"
       }} variant="dark"  >
-        <Navbar.Brand href="/resign"> <img
+        <Navbar.Brand href="/"> <img
         alt=""
         src="1.png"
         width="30"

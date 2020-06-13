@@ -11,7 +11,7 @@ export class HrViewScreen extends Component {
     }
 
     componentWillMount() {
-        fetch('http://localhost:8080/api/resignations').then((res) => {
+        fetch('http://localhost:8080/courses').then((res) => {
             res.json().then((data) => {
                 this.setState({ data: data });
             })
@@ -31,20 +31,22 @@ export class HrViewScreen extends Component {
                 </tr>
             </thead>
             <tbody>
-                <tr onClick={() => {
+{/*                 <tr onClick={() => {
                                     this.props.history.push(`/login`)
                                 }}>
                     <th>Intro to Database</th>
                     <th>Dr. Walaa </th>
                     <th>MySQL</th>
                 </tr>
-                {
+ */}                {
                     this.state.data.map((value, index) => {
                         return (
-                            <tr key={index}>
+                            <tr key={index} onClick={() => {
+                                window.open(value.courseUrl);
+                            }}>
                                <td>{value.courseName} </td>
                                 <td>{value.instractourName}</td>
-                                <td>{value.courseUrl}</td>
+                                <td>{value.courseSkills}</td>
                             </tr>
                         )
                     })

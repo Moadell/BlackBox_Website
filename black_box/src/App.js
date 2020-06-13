@@ -24,7 +24,7 @@ class App extends Component {
           <Switch>
             <Route path="/login" exact component={LoginScreen} />
             <Route path="/upload" component={UploadExcelScreen} />
-            <Route path="/resign" component={ResignReqScreen} />
+            <Route path="/" component={ResignReqScreen} />
             <Route path="/hr-view" component={HrViewScreen} />
             <Route path="/resignations-details" component={ResignationsScreen} />
           </Switch>
