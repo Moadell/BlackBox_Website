@@ -9,10 +9,10 @@ import { Header } from './components';
 
 import {
   LoginScreen,
-  UploadExcelScreen,
-  ResignReqScreen,
-  HrViewScreen,
-  ResignationsScreen
+  jobsView,
+  profile,
+  dashbord,
+  coursesView
 } from './screens';
 import './App.css';
 class App extends Component {
@@ -23,10 +23,10 @@ class App extends Component {
         <Router>
           <Switch>
             <Route path="/login" exact component={LoginScreen} />
-            <Route path="/upload" component={UploadExcelScreen} />
-            <Route path="/resign" component={ResignReqScreen} />
-            <Route path="/hr-view" component={HrViewScreen} />
-            <Route path="/resignations-details" component={ResignationsScreen} />
+            <Route path="/jobs" component={jobsView} />
+            <Route path="/courses" component={coursesView} />
+            <Route path="/profile" component={profile} />
+            <Route path="/" component={dashbord} />
           </Switch>
           <h1> #Discovring_Technology</h1>
         </Router>

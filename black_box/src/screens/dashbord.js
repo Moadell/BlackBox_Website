@@ -11,56 +11,51 @@ import {
 } from 'reactstrap';
 //import "react-toastify/dist/ReactToastify.css";
 
-const API = 'http://localhost:8080/api/';
-const SEARCH = 'users/search'
+//const API = 'http://localhost:8080/api/';
+//const SEARCH = 'users/search'
 
-export class ResignReqScreen extends Component {
+export class dashbord extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      courseId: '',
-      instractourName: '',
-      courseDesc: '',
-      courseName: '',
-      courseUrl: '',
       data: [],
     };
   }
   componentWillMount() {
-    fetch('http://localhost:8080/api/resignations').then((res) => {
+    fetch('http://localhost:8080/courses').then((res) => {
         res.json().then((data) => {
             this.setState({ data: data });
         })
     })
 }
 
-  onSearch = (e) => {
-    e.preventDefault();
-    fetch(API + SEARCH, {
-      body: JSON.stringify({ courseName: this.state.courseName }),
-      headers: {
-        'content-type': 'application/json'
-      },
-      method: 'POST',
-    })
-      .then((response) => {
-        if (response.status === 200) {
-
-          return (response.json());
-        } else {
-          toast.error("Course not found");
-          return undefined;
-        }
-      })
-  }
-
-
-  handleChange = e => {
-    if (e.target.type === 'select-one') {
-      this.setState({ [e.target.name]: e.target.value });
-    }
-  }
+//  onSearch = (e) => {
+//    e.preventDefault();
+//    fetch(API + SEARCH, {
+//      body: JSON.stringify({ courseName: this.state.courseName }),
+//      headers: {
+//        'content-type': 'application/json'
+//      },
+//      method: 'POST',
+//    })
+//      .then((response) => {
+//        if (response.status === 200) {
+//
+//          return (response.json());
+//        } else {
+//          toast.error("Course not found");
+//          return undefined;
+//        }
+//      })
+//  }
+//
+//
+//  handleChange = e => {
+//    if (e.target.type === 'select-one') {
+//      this.setState({ [e.target.name]: e.target.value });
+//    }
+//  }
 
   render() {
     return (
@@ -113,11 +108,11 @@ export class ResignReqScreen extends Component {
                     this.state.data.map((value, index) => {
                         return (
                                 <Card key={index} body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
-                                  <CardTitle>{value.courseName.status}</CardTitle>
-                                  <CardText>{value.instractourName.status}</CardText>
-                                  <CardText>{value.courseDesc.status}</CardText>
+                                  <CardTitle>{value.courseName}</CardTitle>
+                                  <CardText>{value.instractourName}</CardText>
+                                  <CardText>{value.courseDesc}</CardText>
                                   <Button variant="light" onClick={() => {
-                                    window.open(value.courseUrl.status);
+                                    window.open(value.courseUrl);
                                 }}>Apply</Button>
                                 </Card>
                         )
