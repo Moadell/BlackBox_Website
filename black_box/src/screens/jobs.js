@@ -42,7 +42,7 @@ render() {
                 this.state.data.map((value, index) => {
                     return (
                         <tr key={index} onClick={() => {
-                            window.open(value.data.jobUrl)
+                            window.open(value.jobUrl)
                         }}>
                             <td>{value.jobTitle}</td>
                             <td>{value.jobProvider}</td>

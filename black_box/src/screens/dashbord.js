@@ -5,14 +5,18 @@ import {
   Button,
 } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast} from "react-toastify";
 import {
   Card, CardTitle, CardText, CardColumns
 } from 'reactstrap';
 //import "react-toastify/dist/ReactToastify.css";
+//Sidebar
+import {Navbar, Nav, NavItem, Glyphicon} from 'react-bootstrap'; 
 
-//const API = 'http://localhost:8080/api/';
-//const SEARCH = 'users/search'
+//import Sidebar from 'react-bootstrap-sidebar';
+
+const API = 'http://localhost:8080/';
+const SEARCH = '/'
 
 export class dashbord extends Component {
 
@@ -30,32 +34,32 @@ export class dashbord extends Component {
     })
 }
 
-//  onSearch = (e) => {
-//    e.preventDefault();
-//    fetch(API + SEARCH, {
-//      body: JSON.stringify({ courseName: this.state.courseName }),
-//      headers: {
-//        'content-type': 'application/json'
-//      },
-//      method: 'POST',
-//    })
-//      .then((response) => {
-//        if (response.status === 200) {
-//
-//          return (response.json());
-//        } else {
-//          toast.error("Course not found");
-//          return undefined;
-//        }
-//      })
-//  }
-//
-//
-//  handleChange = e => {
-//    if (e.target.type === 'select-one') {
-//      this.setState({ [e.target.name]: e.target.value });
-//    }
-//  }
+  onSearch = (e) => {
+    e.preventDefault();
+    fetch(API + SEARCH, {
+      body: JSON.stringify({ id: this.state.courseName }),
+      headers: {
+        'content-type': 'application/json'
+      },
+      method: 'POST',
+    })
+      .then((response) => {
+        if (response.status === 200) {
+
+          return (response.json());
+        } else {
+          toast.error("Course not found");
+          return undefined;
+        }
+      })
+  }
+
+
+  handleChange = e => {
+    if (e.target.type === 'select-one') {
+      this.setState({ [e.target.name]: e.target.value });
+    }
+  }
 
   render() {
     return (
@@ -83,53 +87,30 @@ export class dashbord extends Component {
             </Form.Group>
             </Form.Group>
         </Form>
+        
         <CardColumns>
             <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
               <CardTitle>Intro to Data-base</CardTitle>
-              <CardText>Dr. Walaa</CardText>
+              <CardText>By : Dr. Walaa</CardText>
               <CardText>This course teaching how to deal with databases</CardText>
-              <Button variant="light">Apply</Button>
-            </Card>
-            <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
-              <CardTitle>Intro to Data-base</CardTitle>
-              <CardText>Dr. Walaa</CardText>
-              <CardText>This course teaching how to deal with databases</CardText>
-              <Button variant="light">Apply</Button>
-            </Card>
-            <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
-              <CardTitle>Intro to Data-base</CardTitle>
-              <CardText>Dr. Walaa</CardText>
-              <CardText>This course teaching how to deal with databases</CardText>
-              <Button variant="light" onClick={() => {
-                                    window.open("https://www.google.com");
-                                }}>Apply</Button>
+              <CardText>Skills : MySQL, Queries</CardText>
+              <Button variant="light">Explore</Button>
             </Card>
             {
                     this.state.data.map((value, index) => {
                         return (
                                 <Card key={index} body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
                                   <CardTitle>{value.courseName}</CardTitle>
-                                  <CardText>{value.instractourName}</CardText>
+                                  <CardText>By : {value.instractourName}</CardText>
                                   <CardText>{value.courseDesc}</CardText>
+                                  <CardText>Skills : {value.courseSkills}</CardText>
                                   <Button variant="light" onClick={() => {
                                     window.open(value.courseUrl);
-                                }}>Apply</Button>
+                                }}>Explore</Button>
                                 </Card>
                         )
                     })
                   }
-            <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
-              <CardTitle>Intro to Data-base</CardTitle>
-              <CardText>Dr. Walaa</CardText>
-              <CardText>This course teaching how to deal with databases</CardText>
-              <Button variant="light">Apply</Button>
-            </Card>
-            <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
-              <CardTitle>Intro to Data-base</CardTitle>
-              <CardText>Dr. Walaa</CardText>
-              <CardText>This course teaching how to deal with databases</CardText>
-              <Button variant="light">Apply</Button>
-            </Card>
             
             
     </CardColumns>

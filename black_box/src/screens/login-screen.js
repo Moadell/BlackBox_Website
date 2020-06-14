@@ -2,37 +2,54 @@ import React from 'react';
 import './login-screen.css'
 
 export class LoginScreen extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      username:"",
+      password:"",
       err: ""
     };
   }
-  login(e) {
+  login = (e) => {
+    console.log(this.state.username, this.state.password);
     e.preventDefault();
-    var username = e.target.elements.username.value;
-    var password = e.target.elements.password.value;
-    if (username === "admin" && password === "123") {
-      this.props.history.push("./hr-view");
-    } else {
-      this.setState({
-        err: "Invalid username or password"
-      });
+    fetch('http://localhost:8080/users/login', {
+      body: JSON.stringify({ username:this.state.username, password:this.state.password }),
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        'content-type': 'application/json'
+      },
+      method: 'POST',
+    })
+      .then((response) => {
+        if (response.status === 201) {
+          console.log("Wasllna")
+          this.props.history.push("/");
+          return (response.json());
+        } else {
+          this.setState({
+            err: "Invalid username or password"
+          });
+        }
+      })
     }
-  }
-
+    handleChange = event => {
+      this.setState({
+        [event.target.name]: event.target.value
+      });
+    };
   render() {
     return (
       <>
       <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-      <div class="split left">
-        <div class="centered img">
+      <div className="split left">
+        <div className="centered img">
         <img src="/LOGO 11.png" alt="BlackBox Logo"></img>
         </div>
         </div>
 
-        <div class="split right">
-        <div class="centered">
+        <div className="split right">
+        <div className="centered">
         <div className="App">
         <br />
         <h1>#Discovering_Technology</h1>
@@ -62,7 +79,7 @@ export class LoginScreen extends React.Component {
           </div>
 
           <br />
-          <input type="submit" value="Login" className="submit_btn" />
+          <input type="submit" value="Login" className="submit_btn" onClick={this.login} />
         </form>
       </div>
       </div>
@@ -70,11 +87,6 @@ export class LoginScreen extends React.Component {
     </> 
     );
   }
-  handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
 }
 
 // export default Login;
