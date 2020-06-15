@@ -110,13 +110,13 @@ export class dashbord extends Component {
         </Form>
         <br></br>
         <CardColumns>
-            <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
+           {/*  <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
               <CardTitle>Intro to Data-base</CardTitle>
               <CardText>By : Dr. Walaa</CardText>
               <CardText>This course teaching how to deal with databases</CardText>
               <CardText>Skills : MySQL, Queries</CardText>
               <Button variant="light">Explore</Button>
-            </Card>
+            </Card> */}
             {
                     this.state.data.map((value, index) => {
                         return (
