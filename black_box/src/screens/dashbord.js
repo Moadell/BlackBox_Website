@@ -9,6 +9,7 @@ import { ToastContainer, toast} from "react-toastify";
 import {
   Card, CardTitle, CardText, CardColumns
 } from 'reactstrap';
+import querString from 'query-string';
 //import "react-toastify/dist/ReactToastify.css";
 //Sidebar
 //import {Navbar, Nav, NavItem, Glyphicon} from 'react-bootstrap'; 
@@ -34,6 +35,11 @@ export class dashbord extends Component {
             this.setState({ data: data });
         })
     })
+}
+componentDidMount() {
+  let url = this.props.location.search;
+  let params = querString.parse(url);
+  const username = params.username;
 }
 
   onSearch = (e) => {
@@ -67,17 +73,17 @@ export class dashbord extends Component {
     return (
       <>
       <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
-        <Col xs={6} md={4}>
+        <Col xs={0} md={0}>
         <Image src="sym.png" roundedCircle />
         </Col>
               <CardTitle>Welocme, {this.state.username}</CardTitle>
               <CardText>Skills, {this.state.skills}</CardText>
               <Row>
           <Col>
-              <Button variant="info" size = "sm" onClick={() => {
-                                    this.props.history.push(`/jobs`)
+              <Button variant="outline-info" size = "sm" onClick={() => {
+                                    this.props.history.push(`/jobs/username=${this.state.username}`)
                                 }} >Jobs</Button>
-          <Button variant="danger" size = "sm" onClick={() => {
+          <Button variant="outline-danger" size = "sm" onClick={() => {
                                     this.props.history.push(`/login`)
                                 }} >Logout</Button></Col>
             </Row>

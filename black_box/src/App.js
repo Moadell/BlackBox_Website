@@ -22,11 +22,11 @@ class App extends Component {
         <Header />
         <Router>
           <Switch>
-            <Route path="/login" exact component={LoginScreen} />
             <Route path="/jobs" component={jobsView} />
             <Route path="/courses" component={coursesView} />
             <Route path="/profile" component={profile} />
-            <Route path="/" component={dashbord} />
+            <Route path="/dashbord" component={dashbord} />
+            <Route path="/" exact component={LoginScreen} />
           </Switch>
           <h1> #Discovring_Technology</h1>
         </Router>

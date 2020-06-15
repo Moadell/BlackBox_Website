@@ -19,7 +19,7 @@ export class LoginScreen extends React.Component {
       .then((response) => {
         if (response.status === 201) {
           console.log("Wasllna")
-          this.props.history.push("/");
+          this.props.history.push(`/dashbord/username=${this.state.username}`);
           return (response.json());
         } else {
           this.setState({
