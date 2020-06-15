@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import {
   Container, Form, Row, Col,
-  Button,
+  Button,Image,
 } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer, toast} from "react-toastify";
@@ -11,7 +11,7 @@ import {
 } from 'reactstrap';
 //import "react-toastify/dist/ReactToastify.css";
 //Sidebar
-import {Navbar, Nav, NavItem, Glyphicon} from 'react-bootstrap'; 
+//import {Navbar, Nav, NavItem, Glyphicon} from 'react-bootstrap'; 
 
 //import Sidebar from 'react-bootstrap-sidebar';
 
@@ -24,6 +24,8 @@ export class dashbord extends Component {
     super(props);
     this.state = {
       data: [],
+      username:"",
+      skills:"",
     };
   }
   componentWillMount() {
@@ -64,7 +66,24 @@ export class dashbord extends Component {
   render() {
     return (
       <>
-      <Container>
+      <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
+        <Col xs={6} md={4}>
+        <Image src="sym.png" roundedCircle />
+        </Col>
+              <CardTitle>Welocme, {this.state.username}</CardTitle>
+              <CardText>Skills, {this.state.skills}</CardText>
+              <Row>
+          <Col>
+              <Button variant="info" size = "sm" onClick={() => {
+                                    this.props.history.push(`/jobs`)
+                                }} >Jobs</Button>
+          <Button variant="danger" size = "sm" onClick={() => {
+                                    this.props.history.push(`/login`)
+                                }} >Logout</Button></Col>
+            </Row>
+            </Card>
+      <Container className="themed-container" fluid={true}>
+     
         <h3>  </h3>
         <br></br>
         <ToastContainer />
@@ -72,7 +91,6 @@ export class dashbord extends Component {
           <Form.Group >
             <Form.Group className="p-2 border border-dark ">
               <Row >
-                <Col><Form.Label>Search Courses</Form.Label></Col>
                 <Col><Form.Control
                   name="courseName"
                   id="id"
@@ -81,13 +99,13 @@ export class dashbord extends Component {
                   onChange={this.handleChange}
                 /></Col>
                 <Col>
-                  <Button type="button" variant="dark" onClick={this.onSearch}>Search</Button>
+                  <Button type="button" variant="dark" onClick={this.onSearch}>Search Courses</Button>
                 </Col>
               </Row>
             </Form.Group>
             </Form.Group>
         </Form>
-        
+        <br></br>
         <CardColumns>
             <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
               <CardTitle>Intro to Data-base</CardTitle>
