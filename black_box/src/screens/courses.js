@@ -42,11 +42,11 @@ export class coursesView extends Component {
                     this.state.data.map((value, index) => {
                         return (
                             <tr key={index} onClick={() => {
-                                window.open(value.courseUrl);
+                                window.open(value.courseURL);
                             }}>
                                <td>{value.courseName} </td>
-                                <td>{value.instractourName}</td>
-                                <td>{value.courseSkills}</td>
+                                <td>{value.instructorName}</td>
+                                <td>{value.courseSkils}</td>
                             </tr>
                         )
                     })

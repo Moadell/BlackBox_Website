@@ -16,7 +16,7 @@ import querString from 'query-string';
 
 //import Sidebar from 'react-bootstrap-sidebar';
 
-const API = 'http://localhost:8080/';
+const API = 'http://localhost:8080/courses/search/';
 const SEARCH = '/'
 
 export class dashbord extends Component {
@@ -27,6 +27,7 @@ export class dashbord extends Component {
       data: [],
       username:"",
       skills:"",
+      courseName: "",
     };
   }
   componentWillMount() {
@@ -44,29 +45,23 @@ componentDidMount() {
 
   onSearch = (e) => {
     e.preventDefault();
-    fetch(API + SEARCH, {
-      body: JSON.stringify({ id: this.state.courseName }),
-      headers: {
-        'content-type': 'application/json'
-      },
-      method: 'POST',
-    })
-      .then((response) => {
-        if (response.status === 200) {
-
-          return (response.json());
-        } else {
-          toast.error("Course not found");
-          return undefined;
-        }
+    console.log("event" , this.state);
+    let self = this;
+    fetch(API + this.state.courseName , {
+      method: 'GET',
+    }).then((res) => {
+      res.json().then((data) => {
+          this.setState({ data: data });
       })
+  })
   }
 
 
   handleChange = e => {
-    if (e.target.type === 'select-one') {
-      this.setState({ [e.target.name]: e.target.value });
-    }
+    this.setState({courseName: e.target.value});
+    // if (e.target.type === 'select-one') {
+    //   this.setState({courseName: e.target.value});
+    // }
   }
 
   render() {
@@ -125,11 +120,11 @@ componentDidMount() {
                         return (
                                 <Card key={index} body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
                                   <CardTitle>{value.courseName}</CardTitle>
-                                  <CardText>By : {value.instractourName}</CardText>
+                                  <CardText>By : {value.instructorName}</CardText>
                                   <CardText>{value.courseDesc}</CardText>
-                                  <CardText>Skills : {value.courseSkills}</CardText>
+                                  <CardText>Skills : {value.courseSkils}</CardText>
                                   <Button variant="light" onClick={() => {
-                                    window.open(value.courseUrl);
+                                    window.open(value.courseURL);
                                 }}>Explore</Button>
                                 </Card>
                         )
