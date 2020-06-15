@@ -12,6 +12,7 @@ import {
   jobsView,
   profile,
   dashbord,
+  recJobsView,
   coursesView
 } from './screens';
 import './App.css';
@@ -23,6 +24,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route path="/jobs" component={jobsView} />
+            <Route path="/myjobs" component={recJobsView} />
             <Route path="/courses" component={coursesView} />
             <Route path="/profile" component={profile} />
             <Route path="/dashbord" component={dashbord} />

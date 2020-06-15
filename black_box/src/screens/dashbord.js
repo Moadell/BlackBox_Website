@@ -17,8 +17,6 @@ import querString from 'query-string';
 //import Sidebar from 'react-bootstrap-sidebar';
 
 const API = 'http://localhost:8080/courses/search/';
-const SEARCH = '/'
-
 export class dashbord extends Component {
 
   constructor(props) {
@@ -31,28 +29,32 @@ export class dashbord extends Component {
     };
   }
   componentWillMount() {
+  let url = this.props.location.search;
+  let params = querString.parse(url);
+  this.state.username = params.username;
+  this.state.skills = params.skills
+  console.log("event", this.state.username, this.state.skills)
     fetch('http://localhost:8080/courses').then((res) => {
         res.json().then((data) => {
             this.setState({ data: data });
         })
     })
 }
-componentDidMount() {
-  let url = this.props.location.search;
-  let params = querString.parse(url);
-  const username = params.username;
-}
 
   onSearch = (e) => {
     e.preventDefault();
     console.log("event" , this.state);
-    let self = this;
     fetch(API + this.state.courseName , {
       method: 'GET',
-    }).then((res) => {
+    }).then((res,err) => {
+      if(err){
+        toast.error("Course not found");
+      }
+      else{
       res.json().then((data) => {
           this.setState({ data: data });
       })
+    }
   })
   }
 
@@ -76,10 +78,10 @@ componentDidMount() {
               <Row>
           <Col>
               <Button variant="outline-info" size = "sm" onClick={() => {
-                                    this.props.history.push(`/jobs/username=${this.state.username}`)
-                                }} >Jobs</Button>
+                                    this.props.history.push(`/myjobs`)
+                                }} >My Jobs</Button>
           <Button variant="outline-danger" size = "sm" onClick={() => {
-                                    this.props.history.push(`/login`)
+                                    this.props.history.push(`/`)
                                 }} >Logout</Button></Col>
             </Row>
             </Card>
