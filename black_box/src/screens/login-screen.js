@@ -13,13 +13,8 @@ export class LoginScreen extends React.Component {
   login = (e) => {
     console.log(this.state.username, this.state.password);
     e.preventDefault();
-    fetch('http://localhost:8080/users/login', {
-      body: JSON.stringify({ username:this.state.username, password:this.state.password }),
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        'content-type': 'application/json'
-      },
-      method: 'POST',
+    fetch('http://localhost:8080/users/login/' + this.state.username + '/' + this.state.password, {
+      method: 'GET',
     })
       .then((response) => {
         if (response.status === 201) {
